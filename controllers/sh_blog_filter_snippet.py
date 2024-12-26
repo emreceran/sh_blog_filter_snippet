@@ -47,10 +47,10 @@ class Main(http.Controller):
             post_url = '/blog/%s/post/%s' % (slug(post.blog_id), slug(post))
 
             # Yazar bilgilerini çekiyoruz
-            # resuser = request.env['res.users'].search([('partner_id', '=', post.author_id.id)], limit=1)
-            # linkedin = resuser.linkedin
-            # profile = resuser.profilePage
-            # mail = resuser.login
+            resuser = request.env['res.users'].search([('partner_id', '=', post.author_id.id)], limit=1)
+            linkedin = resuser.linkedin
+            profile = resuser.profilePage
+            mail = resuser.login
 
             # Sonuçları güncelliyoruz
             res_post.update({
@@ -61,9 +61,9 @@ class Main(http.Controller):
                 'post_date_month_name': post_date_month_name,
                 'post_date_month_name_short': post_date_month_name_short,
                 'post_date_month_day': post_date_month_day,
-                # 'linkedin': linkedin,
-                # 'profile': profile,
-                # 'mail': mail,
+                'linkedin': linkedin,
+                'profile': profile,
+                'mail': mail,
             })
         return res.get('posts')
 

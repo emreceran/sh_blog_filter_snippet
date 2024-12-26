@@ -945,7 +945,7 @@
 
                                                     <!-- Hover ile görüntülenecek içerik -->
                                                     <div id="my_modal" class="popup-modal container ">
-                                                        <!-- <div class="row popup-content text-center">
+                                                        <div class="row popup-content text-center">
                                                             <a t-att-href="post['linkedin']" class="col-12">
                                                                 <span>
                                                                     <img class="bg-light" src="sh_blog_filter_snippet/static/src/img/my_img/social.png" alt=""/>
@@ -962,7 +962,7 @@
                                                                   <img src="sh_blog_filter_snippet/static/src/img/my_img/contact.png" alt=""/>
                                                                 </span>
                                                             </a>
-                                                        </div> -->
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 
