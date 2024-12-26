@@ -8,6 +8,11 @@ import uuid
 import json
 from datetime import datetime
 
+from babel.dates import format_date
+from datetime import date
+from odoo.tools.misc import get_lang
+
+
 from odoo.osv import expression
 from ast import literal_eval
 from odoo.addons.http_routing.models.ir_http import slug
@@ -23,42 +28,43 @@ class Main(http.Controller):
     # --------------------------------------------------------------------------
     # Prepare Products Vals
     # --------------------------------------------------------------------------
-
     def _prepare_blog_post_vals(self, posts):
-        fields = ['id', 'name', 'cover_properties', 'post_date', 'subtitle','tag_ids', 'author_id']
-        res = {}
-        res.update({
-            'posts': posts.read(fields),
-        })
+        fields = ['id', 'name', 'cover_properties', 'post_date', 'subtitle', 'tag_ids', 'author_id']
+        res = {'posts': posts.read(fields)}
 
         for res_post, post in zip(res['posts'], posts):
-            cover_properties = json.loads(post.cover_properties)
-            # Türkçe dil ayarını aktif hale getiriyoruz
-            locale.setlocale(locale.LC_TIME, 'tr_TR.UTF-8')
-            dt = datetime.date(post.post_date)
-            post_date_month_name = dt.strftime("%B")
-            post_date_month_name_short = dt.strftime("%b")
-            post_date_month_day = dt.strftime("%d")
-            post_date = dt.strftime("%d %B %Y")
+            cover_properties = json.loads(post.cover_properties or "{}")
+
+            # Türkçe dil ayarını babel ile aktif ediyoruz
+            locale = get_lang(request.env).code  # Kullanıcının mevcut dil ayarını al
+            dt = post.post_date
+
+            post_date_month_name = format_date(dt, format="MMMM", locale=locale)  # Örnek: "Aralık"
+            post_date_month_name_short = format_date(dt, format="MMM", locale=locale)  # Örnek: "Ara"
+            post_date_month_day = dt.strftime("%d")  # Gün formatı
+            post_date = format_date(dt, format="d MMMM yyyy", locale=locale)  # Tam tarih formatı
+
             post_url = '/blog/%s/post/%s' % (slug(post.blog_id), slug(post))
 
-            # Yazar LinkedIn URL'si
+            # Yazar bilgilerini çekiyoruz
             resuser = request.env['res.users'].search([('partner_id', '=', post.author_id.id)], limit=1)
-            linkedin=resuser.linkedin
-            profile=resuser.profile
-            mail=resuser.login
+            linkedin = resuser.linkedin
+            profile = resuser.profile
+            mail = resuser.login
 
-            res_post['cover_properties'] = cover_properties
-            res_post['post_date'] = post_date
-            res_post['post_url'] = post_url
-            res_post['img_src'] = cover_properties.get(
-                'background-image', False)
-            res_post['post_date_month_name'] = post_date_month_name
-            res_post['post_date_month_name_short'] = post_date_month_name_short
-            res_post['post_date_month_day'] = post_date_month_day
-            res_post['linkedin'] = linkedin
-            res_post['profile'] = profile
-            res_post['mail'] = mail
+            # Sonuçları güncelliyoruz
+            res_post.update({
+                'cover_properties': cover_properties,
+                'post_date': post_date,
+                'post_url': post_url,
+                'img_src': cover_properties.get('background-image', False),
+                'post_date_month_name': post_date_month_name,
+                'post_date_month_name_short': post_date_month_name_short,
+                'post_date_month_day': post_date_month_day,
+                'linkedin': linkedin,
+                'profile': profile,
+                'mail': mail,
+            })
         return res.get('posts')
 
     # --------------------------------------------------------------------------
