@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="sh_blog_filter_snippet_website_snippet_options" inherit_id="website.snippet_options">
+		<xpath expr="//div" position="after">
+			<div data-selector="
+                    #sh_blog_snippet_9 > .container > .row >.sh_disable_hover_part,
+                    #sh_blog_snippet_10 > .container > .row >.sh_disable_hover_part,
+                    #sh_blog_snippet_11 > .container > .row >.sh_disable_hover_part,
+                    #sh_blog_snippet_13 > .container > .row >.sh_disable_hover_part,
+                    #sh_blog_snippet_14 > .container > .row > .col-xxl-9 > .row >.sh_disable_hover_part,
+                    #sh_blog_snippet_15 > .container > .row >.sh_disable_hover_part
+                    
+            ">
+				<we-button-group string="Disable Hover">
+					<we-button title="Enable Hover" data-select-class="">
+						None
+					</we-button>
+					<we-button title="Disable Hover" data-select-class="sh_disable_hover_cls">
+						<i class="fa fa-ban" />
+					</we-button>
+				</we-button-group>
+			</div>
+		</xpath>
+	</template>
+</odoo>

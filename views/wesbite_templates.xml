@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- snippet options -->
+    <template id="sh_product_snippet_options" inherit_id="website.snippet_options" name="Product List Options">
+        <xpath expr="//div" position="after">
+            <div data-selector=".js_cls_get_sh_blog_filter_s_post">
+                <!-- Filter -->
+                <we-select string="Filter" data-name="sh_filter_opt" data-attribute-name="filterId">
+                    <we-button data-select-data-attribute="">None</we-button>
+                    <t t-set="sh_filters" t-value="request.env['sh.blog.filter.snippet'].search([])" />
+                    <t t-if="len(sh_filters)">
+                        <t t-foreach="sh_filters" t-as="sh_filter">
+                            <we-button t-att-data-select-data-attribute="sh_filter.id">
+                                <t t-esc="sh_filter.name" />
+                            </we-button>
+                        </t>
+                    </t>
+                </we-select>
+            </div>
+        </xpath>
+    </template>
+    
+    <template id="sh_blog_filter_snippet_website_snippets" inherit_id="website.snippets" name="Blog Filter Snippet">
+        <xpath expr="//div[@id='snippet_structure']" position="before">
+            <div id="sh_blog_filter_snippet" class="o_panel">
+                <div class="o_panel_header">
+                    Dynamic Blog Snippets
+                </div>
+                <div class="o_panel_body">
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_1" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_1.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_2" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_2.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_3" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_3.svg"/>
+                    <!--  new blog added  -->
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_4" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_4.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_5" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_5.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_6" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_6.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_7" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_7.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_8" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_8.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_9" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_9.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_10" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_10.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_11" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_11.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_12" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_12.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_13" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_13.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_14" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_14.svg"/>
+                    <t t-snippet="sh_blog_filter_snippet.sh_blog_filter_s_test_15" t-thumbnail="/sh_blog_filter_snippet/static/src/img/blocks/sh_blog_15.svg"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

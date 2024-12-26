@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sh Snippet 1 -->
+    <template id="sh_blog_filter_s_test_1" name="Snippet 1">
+        <section id="sh_blog_snippet_1"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0" data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_1_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_1_item_single_tab">
+            <div class="container">
+                <div class="heading text-center">
+                    <h3>Trending Posts</h3>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 1 -->
+    <!-- Sh Snippet 2 -->
+    <template id="sh_blog_filter_s_test_2" name="Snippet 2">
+        <section id="sh_blog_snippet_2"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0" data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_2_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_2_item_single_tab">
+            <div class="container">
+                <div class="heading text-center">
+                    <h3>Traditional Blogs</h3>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 2 -->
+    <!-- Sh Snippet 3 -->
+    <template id="sh_blog_filter_s_test_3" name="Snippet 3">
+        <section
+            id="sh_blog_snippet_3"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_3_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_3_item_single_tab"
+        >
+            <div class="container">
+                <div class="heading text-center">
+                    <h3>NEWS &amp; BLOG</h3>
+                    <h2 class="text-center">
+                        Latest &amp; Trending Blogs
+                    </h2>
+                    <div class="sh_divison"></div>
+                    <p class="text-center"> Sed sagittis sodales lobortis. Curabitur in eleifend
+                        turpis, id vehicula odio. Donec pulvinar tellus<br /> egetmagna aliquet
+                        ultricies. nec eleifend sem convallis vitae. </p>
+                </div>
+
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 3 -->
+
+    <!-- New added Blog Dec/27/2022 -->
+
+    <!-- Sh Snippet 4 -->
+    <template id="sh_blog_filter_s_test_4" name="Snippet 4">
+        <section
+            id="sh_blog_snippet_4"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_4_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_4_item_single_tab"
+        >
+            <div class="container">
+                <div class="heading text-center">
+                    <span>Latest News</span>
+                    <h2 class="text-center"> Check out the company<br /> latest News </h2>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 4 -->
+    <!-- Sh Snippet 5 -->
+    <template id="sh_blog_filter_s_test_5" name="Snippet 5">
+        <section
+            id="sh_blog_snippet_5"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_5_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_5_item_single_tab"
+        >
+            <div class="container">
+                <div class="heading text-center">
+                    <span>Latest Articles</span>
+                    <h2 class="text-center">
+                        Latest News and Articles
+                    </h2>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 5 -->
+    <!-- Sh Snippet 6 -->
+    <template id="sh_blog_filter_s_test_6" name="Snippet 6">
+        <section
+            id="sh_blog_snippet_6"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_6_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_6_item_single_tab"
+        >
+            <div class="container">
+                <div class="heading text-center">
+                    <span>Latest Articles</span>
+                    <h2 class="text-center">
+                        Get to know us more from our blog section
+                    </h2>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 6 -->
+    <!-- Sh Snippet 7 -->
+    <template id="sh_blog_filter_s_test_7" name="Snippet 7">
+        <section
+            id="sh_blog_snippet_7"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_7_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_7_item_single_tab"
+        >
+            <div class="container">
+                <div class="sh_layer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                        <g fill="" class="nc-icon-wrapper">
+                            <circle cx="25" cy="25" r="25"></circle>
+                        </g>
+                    </svg>
+                </div>
+                <div class="heading text-center">
+                    <div class="sh_sub_title">recent post
+                    </div>
+                    <h2 class="text-center"> Read the latest from our<br /> account experts </h2>
+                    <div class="sh_blog_btn">
+                        <span class="fa fa-arrow-left sh_icon_left"></span>
+                        <span>View All Post</span>
+                        <span class="fa fa-arrow-right sh_icon_right"></span>
+                    </div>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 7 -->
+
+
+    <!-- Sh Snippet 8 -->
+    <template id="sh_blog_filter_s_test_8" name="Snippet 8">
+        <section
+            id="sh_blog_snippet_8"
+            class="js_cls_get_sh_blog_filter_s_post sh_onemate_snippet_31"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_8_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_8_item_single_tab"
+        >
+            <div class="container">
+                <div class="heading text-center">
+                    <div class="sh_sub_title">Our Blog
+                    </div>
+                    <h2 class="text-center">  the latest from our<br /> account experts </h2>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+                
+
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 8 -->
+
+    <!-- Sh Snippet 9 -->
+    <template id="sh_blog_filter_s_test_9" name="Snippet 9">
+        <section
+            id="sh_blog_snippet_9"
+            class="js_cls_get_sh_blog_filter_s_post"
+            data-column_class="col-lg-4 col-md-6 col-12 pr-0 pl-0"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_9_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_9_item_single_tab"
+        >
+            <div class="container">
+                <div class="heading text-center">
+                    <div class="sh_subtitle">
+                        OUR BLOG
+                    </div>
+                    <div class="sh_title">
+                        OUR LATEST NEWS
+                    </div>
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 9 -->
+
+    <!-- Sh Snippet 10 -->
+    <template id="sh_blog_filter_s_test_10" name="Snippet 10">
+        <section
+            id="sh_blog_snippet_10" style="background:url('/sh_blog_filter_snippet/static/src/img/sh_blog_14.png') !important;background-position: center !important;background-size: cover !important;"
+            class="js_cls_get_sh_blog_filter_s_post"
+            data-column_class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_10_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_10_item_single_tab"
+        >
+            <div class="container">
+                <div class="sh_badge">
+                    Our Blogs
+                </div>
+                <div class="sh_heading_title">
+                    Exclusive It Solutions
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 10 -->
+
+    <!-- Sh Snippet 11 -->
+    <template id="sh_blog_filter_s_test_11" name="Snippet 11">
+        <section
+            id="sh_blog_snippet_11"
+            class="js_cls_get_sh_blog_filter_s_post"
+            data-column_class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_11_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_11_item_single_tab"
+        >
+            <div class="container">
+                <div class="sh_heading_text">
+                    Our Recent Blogs &amp; Activity
+                </div>
+                <div class="sh_subtitle">
+                    Phasellus blandit, sem non eleifend rhoncus, nisl eros lobortis tellus, at
+                    dignissim diam risus a leo.
+                    Maecenas augue velit, elementum at arcu vel, laoreet tincidunt nisl.
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 11 -->
+
+
+
+    <!-- Sh Snippet 12 -->
+    <template id="sh_blog_filter_s_test_12" name="Snippet 12">
+        <section
+            id="sh_blog_snippet_12"
+            class="js_cls_get_sh_blog_filter_s_post"
+            data-column_class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_12_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_12_item_single_tab"
+        >
+            <div class="container">
+                <div class="sh_sub_title">
+                    <span class="fa fa-book"></span> Our News &amp; Blog </div>
+                <div class="sh_title">
+                    Latests News &amp; Blogs
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 12 -->
+
+
+
+    <!-- Sh Snippet 13 -->
+    <template id="sh_blog_filter_s_test_13" name="Snippet 13">
+        <section
+            id="sh_blog_snippet_13"
+            class="js_cls_get_sh_blog_filter_s_post"
+            data-column_class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_13_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_13_item_single_tab"
+        >
+            <div class="container">
+                <div class="sh_sub_title">
+                    Latest News &amp; Blog
+                </div>
+                <div class="sh_title">
+                    Read Our Latest Articles
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 13 -->
+
+
+    <!-- Sh Snippet 14 -->
+    <template id="sh_blog_filter_s_test_14" name="Snippet 14">
+        <section
+            id="sh_blog_snippet_14"
+            class="js_cls_get_sh_blog_filter_s_post"
+            data-column_class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_14_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_14_item_single_tab"
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-9 col-xl-9 col-lg-12 col-md-12 col-12 sh_order">
+                        <div class="js_cls_render_dynamic_post_area o_not_editable" />
+                    </div>
+                    <div class="col-xxl-3 col-xl-3 col-lg-12 col-md-12 col-12">
+                        <div class="sh_heading_box">
+                            <div class="sh_header">Blog</div>
+                            <div class="sh_title">
+                                latest news
+                            </div>
+                            <div class="sh_divider">
+
+                            </div>
+                            <div class="sh_sub_title">
+                                It is a long established fact that a reader will be distracted by
+                                content page when looking.
+                            </div>
+                            <div class="sh_btn">
+                                <a href="#">Explore More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 14 -->
+
+
+
+
+    <!-- Sh Snippet 15 -->
+    <template id="sh_blog_filter_s_test_15" name="Snippet 15">
+        <section
+            id="sh_blog_snippet_15"
+            class="js_cls_get_sh_blog_filter_s_post"
+            data-column_class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12"
+            data-owl_item_mobile="1"
+            data-owl_item_tablet="2"
+            data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_15_item"
+            data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_15_item_single_tab"
+        >
+            <div class="container">
+                <div class="sh_sub_title">
+                    Non-Profit Initiative
+                </div>
+                <div class="sh_title">
+                    Recent news.
+                </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
+            </div>
+        </section>
+    </template>
+    <!-- Sh Snippet 15 -->
+
+</odoo>
