@@ -51,6 +51,7 @@ class Main(http.Controller):
             linkedin = resuser.linkedin
             profile = resuser.profilePage
             mail = resuser.login
+            print(mail)
 
             # Sonuçları güncelliyoruz
             res_post.update({

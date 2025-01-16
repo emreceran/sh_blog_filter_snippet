@@ -946,18 +946,21 @@
                                                     <!-- Hover ile görüntülenecek içerik -->
                                                     <div id="my_modal" class="popup-modal container ">
                                                         <div class="row popup-content text-center">
-                                                            <a t-att-href="post['linkedin']" class="col-12">
+<!--                                                            <a t-att-href="blog.sudo().author_id.linkedin" class="col-12">-->
+                                                            <a t-att-href=" " class="col-12">
                                                                 <span>
                                                                     <img class="bg-light" src="sh_blog_filter_snippet/static/src/img/my_img/social.png" alt=""/>
                                                                 </span>
                                                             </a>
                                                             
-                                                            <a t-att-href="'mailto:'+post['mail']" class="col-12">
+<!--                                                            <a t-att-href="'blog.sudo().author_id.login" class="col-12">-->
+                                                            <a t-att-href=" " class="col-12">
                                                                 <span>
                                                                   <img src="sh_blog_filter_snippet/static/src/img/my_img/mail.png" alt=""/>
                                                                 </span>
                                                             </a>
-                                                            <a t-att-href="post['profile']" class="col-12">
+<!--                                                            <a t-att-href="blog.sudo().author_id.profilePage" class="col-12">-->
+                                                            <a t-att-href=" " class="col-12">
                                                                 <span>
                                                                   <img src="sh_blog_filter_snippet/static/src/img/my_img/contact.png" alt=""/>
                                                                 </span>
@@ -968,7 +971,7 @@
                                                 
 
                                                 <div class="sh_tags">
-                                                    <span class="fa fa-folder-o"></span>
+<!--                                                    <span class="fa fa-folder-o"></span>-->
                                                     <t t-if='len(post["tag_ids"]) != 0'>
                                                         <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
                                                         <div class="sh_blog_cat">
