@@ -764,6 +764,7 @@
 			}
 			.img-container {
 				&:after {
+					padding: 8px;
 					opacity: 1;
 				}
 			}
@@ -771,7 +772,7 @@
 		.img-container {
 			position: relative;
 			&:after {
-				content: '';height: 100%;width: 100%;transition: all 0.7s ease-in-out;background: rgba(0,0,0,.5);opacity: 0;position: absolute;top: 0;left: 0;border-top-left-radius: 10px;border-top-right-radius: 10px;
+				content: attr(data-content); color:white; height: 100%;width: 100%;transition: all 0.7s ease-in-out;background: rgba(0,0,0,.5);opacity: 0;position: absolute;top: 0;left: 0;border-top-left-radius: 10px;border-top-right-radius: 10px;
 			}
 		}
 	}

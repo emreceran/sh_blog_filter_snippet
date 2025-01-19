@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Softhealer Technologies.
 
+from bs4 import BeautifulSoup
 import locale
 from odoo.http import request
 from odoo import http
@@ -29,7 +30,7 @@ class Main(http.Controller):
     # Prepare Products Vals
     # --------------------------------------------------------------------------
     def _prepare_blog_post_vals(self, posts):
-        fields = ['id', 'name', 'cover_properties', 'post_date', 'subtitle', 'tag_ids', 'author_id']
+        fields = ['id', 'name', 'cover_properties', 'post_date', 'subtitle', 'tag_ids', 'author_id', 'content']
         res = {'posts': posts.read(fields)}
 
         for res_post, post in zip(res['posts'], posts):
@@ -51,7 +52,14 @@ class Main(http.Controller):
             linkedin = resuser.linkedin
             profile = resuser.profilePage
             mail = resuser.login
-
+            
+            content2 = BeautifulSoup(post['content'], 'html.parser').get_text()
+            if len(content2) <= 200:
+                content = content2
+            else:
+                content = content2[:200].rsplit(' ', 1)[0] + '...'
+                
+                
             # Sonuçları güncelliyoruz
             res_post.update({
                 'cover_properties': cover_properties,
@@ -64,6 +72,7 @@ class Main(http.Controller):
                 'linkedin': linkedin,
                 'profile': profile,
                 'mail': mail,
+                'content': content,
             })
         return res.get('posts')
 

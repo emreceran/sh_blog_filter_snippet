@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
+
     <!-- Snippet 1 Multi -->
     <template id="sh_blog_filter_s_test_1_item" name="Snippet 1">
         <div class="justify-content-center">
@@ -237,19 +237,19 @@
                                         <div class="content">
                                             <div class="sh_details">
                                                 <div class="sh_date">
-                                                    
-                                                        <div>
-                    
-                                                            <p>
-                                                                <t t-esc="post['post_date_month_day']" />
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <span>
-                                                                <t t-esc="post['post_date_month_name_short']" />
-                                                            </span>
-                                                        </div>
-                                                    
+
+                                                    <div>
+
+                                                        <p>
+                                                            <t t-esc="post['post_date_month_day']" />
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <span>
+                                                            <t t-esc="post['post_date_month_name_short']" />
+                                                        </span>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <h5 class="card-title">
@@ -269,9 +269,9 @@
                                                                 <div class="sh_read_text">
                                                                         Read More
                                                                 </div>
-                                                            <div class="sh_icon_group">
-                                                                <span class="fa fa-long-arrow-right"></span>
-                                                            </div>
+                                                                <div class="sh_icon_group">
+                                                                    <span class="fa fa-long-arrow-right"></span>
+                                                                </div>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -289,7 +289,7 @@
             </div>
         </div>
     </template>
-    
+
 
     <!-- Snippet 3 Single -->
     <template id="sh_blog_filter_s_test_3_item_single_tab" name="Snippet 3">
@@ -339,9 +339,9 @@
                                                 <div class="sh_read_text">
                                                         Read More
                                                 </div>
-                                            <div class="sh_icon_group">
-                                                <span class="fa fa-long-arrow-right"></span>
-                                            </div>
+                                                <div class="sh_icon_group">
+                                                    <span class="fa fa-long-arrow-right"></span>
+                                                </div>
                                             </div>
                                         </a>
                                     </div>
@@ -353,196 +353,328 @@
             </t>
         </t>
     </template>
-<!-- Snippet 3 Single end -->
+    <!-- Snippet 3 Single end -->
 
 
-<!-- Snippet 4 Multi -->
-<template id="sh_blog_filter_s_test_4_item" name="Snippet 4">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-out="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+    <!-- Snippet 4 Multi -->
+    <template id="sh_blog_filter_s_test_4_item" name="Snippet 4">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-out="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
 
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                            <div t-attf-class="#{column_classes}">
-                                <div class="box">
-                                    <div class="img-container">
-                                        <div class="img">
-                                            <a t-att-href="post['post_url']">
-                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <div class="sh_details">
-                                            <t t-if='len(post["tag_ids"]) != 0'>
-                                                <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
-                                                <div class="sh_blog_cat">
-                                                    <t t-if='tags' t-foreach='tags' t-as='tag'>
-                                                        <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
-                                                    </t>
-                                                </div>
-                                            </t>
-                                            <h5 class="card-title">
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="box">
+                                        <div class="img-container">
+                                            <div class="img">
                                                 <a t-att-href="post['post_url']">
-                                                    <t t-out="post['name']" />
+                                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
                                                 </a>
-                                            </h5>
-                
-                                            <div class="sh_box">
-                                                <div class="img_1">
-                                                    <div class="sh_main_img" t-if='blog and blog.author_id'>
-                                                        <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)"/>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="sh_details">
+                                                <t t-if='len(post["tag_ids"]) != 0'>
+                                                    <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
+                                                    <div class="sh_blog_cat">
+                                                        <t t-if='tags' t-foreach='tags' t-as='tag'>
+                                                            <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
+                                                        </t>
+                                                    </div>
+                                                </t>
+                                                <h5 class="card-title">
+                                                    <a t-att-href="post['post_url']">
+                                                        <t t-out="post['name']" />
+                                                    </a>
+                                                </h5>
+
+                                                <div class="sh_box">
+                                                    <div class="img_1">
+                                                        <div class="sh_main_img" t-if='blog and blog.author_id'>
+                                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
+                                                        <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                                    </div>
+                                                    <div class="sh_date">
+                                                        <t t-out="post['post_date']" />
                                                     </div>
                                                 </div>
-                                                <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
-                                                    <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
-                                                </div>
-                                                <div class="sh_date">
-                                                    <t t-out="post['post_date']" />
-                                                </div>
                                             </div>
-                                        </div>    
-                                        <div class="card-text">
-                                            <div class="sh_card_btn">
-                                                <div class="sh_read_more">
-                                                    <a t-att-href="post['post_url']" class="sh_read_more_btn">
+                                            <div class="card-text">
+                                                <div class="sh_card_btn">
+                                                    <div class="sh_read_more">
+                                                        <a t-att-href="post['post_url']" class="sh_read_more_btn">
                                                             <span class="fa fa-arrow-right"></span>
-                                                    </a>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-</template>
-
-
-<!-- Snippet 4 Single -->
-<template id="sh_blog_filter_s_test_4_item_single_tab" name="Snippet 4">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-        <t t-foreach="list_posts_dic" t-as="post">
-            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-            <div t-attf-class="#{column_classes}">
-                <div class="box">
-                    <div class="img-container">
-                        <div class="img">
-                            <a t-att-href="post['post_url']">
-                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="sh_details">
-                            <t t-if='len(post["tag_ids"]) != 0'>
-                                <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
-                                <div class="sh_blog_cat">
-                                    <t t-if='tags' t-foreach='tags' t-as='tag'>
-                                        <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
-                                    </t>
                                 </div>
                             </t>
-                            <h5 class="card-title">
-                                <a t-att-href="post['post_url']">
-                                    <t t-out="post['name']" />
-                                </a>
-                            </h5>
+                        </div>
+                    </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
+        </div>
+    </template>
 
-                            <div class="sh_box">
-                                <div class="img_1">
-                                    <div class="sh_main_img" t-if='blog and blog.author_id'>
-                                        <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)"/>
+
+    <!-- Snippet 4 Single -->
+    <template id="sh_blog_filter_s_test_4_item_single_tab" name="Snippet 4">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+            <t t-foreach="list_posts_dic" t-as="post">
+                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                <div t-attf-class="#{column_classes}">
+                    <div class="box">
+                        <div class="img-container">
+                            <div class="img">
+                                <a t-att-href="post['post_url']">
+                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="sh_details">
+                                <t t-if='len(post["tag_ids"]) != 0'>
+                                    <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
+                                    <div class="sh_blog_cat">
+                                        <t t-if='tags' t-foreach='tags' t-as='tag'>
+                                            <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
+                                        </t>
+                                    </div>
+                                </t>
+                                <h5 class="card-title">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-out="post['name']" />
+                                    </a>
+                                </h5>
+
+                                <div class="sh_box">
+                                    <div class="img_1">
+                                        <div class="sh_main_img" t-if='blog and blog.author_id'>
+                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)"/>
+                                        </div>
+                                    </div>
+                                    <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
+                                        <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                    </div>
+                                    <div class="sh_date">
+                                        <t t-out="post['post_date']" />
                                     </div>
                                 </div>
-                                <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
-                                    <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
-                                </div>
-                                <div class="sh_date">
-                                    <t t-out="post['post_date']" />
-                                </div>
                             </div>
-                        </div>    
-                        <div class="card-text">
-                            <div class="sh_card_btn">
-                                <div class="sh_read_more">
-                                    <a t-att-href="post['post_url']" class="sh_read_more_btn">
-                                        <span class="fa fa-arrow-right"></span>
-                                    </a>
+                            <div class="card-text">
+                                <div class="sh_card_btn">
+                                    <div class="sh_read_more">
+                                        <a t-att-href="post['post_url']" class="sh_read_more_btn">
+                                            <span class="fa fa-arrow-right"></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </t>
-    </t>
-</template>
-<!-- Snippet 4 Single end -->
-
-
-<!-- Snippet 5 Multi -->
-<template id="sh_blog_filter_s_test_5_item" name="Snippet 5">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
             </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+        </t>
+    </template>
+    <!-- Snippet 4 Single end -->
 
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <div t-attf-class="#{column_classes}">
-                                <div class="box">
-                                    <div class="img-container">
-                                        <div class="img">
-                                            <a t-att-href="post['post_url']">
-                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%; border-top-left-radius: 10px;border-top-right-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                                            </a>
+
+    <!-- Snippet 5 Multi -->
+    <template id="sh_blog_filter_s_test_5_item" name="Snippet 5">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="box">
+                                        <div class="img-container" t-att-data-content="post['content']">
+                                            <div class="img">
+                                                <a t-att-href="post['post_url']">
+                                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%; border-top-left-radius: 10px;border-top-right-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <div class="sh_details">
+                                                <div class="sh_blog_cat">
+                                                    <div>
+                                                        <t t-if='len(post["tag_ids"]) != 0'>
+                                                            <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
+                                                            <div class="sh_blog_cat">
+                                                                <t t-if='tags' t-foreach='tags' t-as='tag'>
+                                                                    <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
+
+                                                                </t>
+                                                            </div>
+                                                        </t>
+                                                    </div>
+                                                    <div class="sh_date">
+                                                        <t t-raw="post['post_date']" />
+                                                    </div>
+                                                </div>
+                                                <h5 class="card-title">
+                                                    <a t-att-href="post['post_url']">
+                                                        <t t-raw="post['name']" />
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <!-- <t t-raw="post['content']" /> -->
                                         </div>
                                     </div>
-                                    <div class="content">
-                                        <div class="sh_details">
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
+        </div>
+        <div class="categori_link text-end me-3">
+            <a href="/blog/sektorel-haberler-5">Tüm Sektörel Haberler <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </template>
+
+
+    <!-- Snippet 5 Single -->
+    <template id="sh_blog_filter_s_test_5_item_single_tab" name="Snippet 9">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+            <t t-foreach="list_posts_dic" t-as="post">
+                <div t-attf-class="#{column_classes}">
+                    <div class="box">
+                        <div class="img-container">
+                            <div class="img">
+                                <a t-att-href="post['post_url']">
+                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;border-top-left-radius: 10px;border-top-right-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="sh_details">
+                                <div class="sh_blog_cat">
+                                    <div>
+                                        <t t-if='len(post["tag_ids"]) != 0'>
+                                            <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
                                             <div class="sh_blog_cat">
+                                                <t t-if='tags' t-foreach='tags' t-as='tag'>
+                                                    <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
+                                                </t>
+                                            </div>
+                                        </t>
+                                    </div>
+                                    <div class="sh_date">
+                                        <t t-raw="post['post_date']" />
+                                    </div>
+                                </div>
+                                <h5 class="card-title">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-raw="post['name']" />
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+    <!-- Snippet 5 Single end -->
+
+
+
+    <!-- Snippet 6 Multi -->
+    <template id="sh_blog_filter_s_test_6_item" name="Snippet 6">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="box">
+                                        <div class="img-container">
+                                            <div class="img">
+                                                <a t-att-href="post['post_url']">
+                                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%; border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="sh_details">
+                                                <div class="sh_blog_cat">
+                                                    <div class="sh_date">
+                                                        <span class="fa fa-clock-o"></span>
+                                                        <t t-raw="post['post_date']" />
+                                                    </div>
+
+                                                </div>
                                                 <div>
                                                     <t t-if='len(post["tag_ids"]) != 0'>
                                                         <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
@@ -553,50 +685,52 @@
                                                         </div>
                                                     </t>
                                                 </div>
-                                                <div class="sh_date">
-                                                    <t t-raw="post['post_date']" />
-                                                </div>
+                                                <h5 class="card-title">
+                                                    <a t-att-href="post['post_url']">
+                                                        <t t-raw="post['name']" />
+                                                    </a>
+                                                </h5>
+                                                <p class="sh_card-text">
+                                                    <t t-raw="post['subtitle']" />
+                                                </p>
                                             </div>
-                                            <h5 class="card-title">
-                                                <a t-att-href="post['post_url']">
-                                                    <t t-raw="post['name']" />
-                                                </a>
-                                            </h5>
-                                        </div>    
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-    <div class="categori_link text-end me-3"><a href="/blog/sektorel-haberler-5">Tüm Sektörel Haberler <i class="fa fa-arrow-circle-right"></i></a></div>
-</template>
-
-
-<!-- Snippet 5 Single -->
-<template id="sh_blog_filter_s_test_5_item_single_tab" name="Snippet 9">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-        <t t-foreach="list_posts_dic" t-as="post">
-            <div t-attf-class="#{column_classes}">
-                <div class="box">
-                    <div class="img-container">
-                        <div class="img">
-                            <a t-att-href="post['post_url']">
-                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;border-top-left-radius: 10px;border-top-right-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                            </a>
-                            
+                            </t>
                         </div>
                     </div>
-                    <div class="content">
-                        <div class="sh_details">
-                            <div class="sh_blog_cat">
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
+        </div>
+    </template>
+    <!-- Snippet 6 Single -->
+    <template id="sh_blog_filter_s_test_6_item_single_tab" name="Snippet 6">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+            <t t-foreach="list_posts_dic" t-as="post">
+                <div t-attf-class="#{column_classes}">
+                    <div class="box">
+                        <div class="img-container">
+                            <div class="img">
+                                <a t-att-href="post['post_url']">
+                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="sh_details">
+                                <div class="sh_blog_cat">
+                                    <div class="sh_date">
+                                        <span class="fa fa-clock-o"></span>
+                                        <t t-raw="post['post_date']" />
+                                    </div>
+
+                                </div>
                                 <div>
                                     <t t-if='len(post["tag_ids"]) != 0'>
                                         <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
@@ -607,322 +741,194 @@
                                         </div>
                                     </t>
                                 </div>
-                                <div class="sh_date">
-                                    <t t-raw="post['post_date']" />
-                                </div>
+                                <h5 class="card-title">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-raw="post['name']" />
+                                    </a>
+                                </h5>
+                                <p class="sh_card-text">
+                                    <t t-raw="post['subtitle']" />
+                                </p>
                             </div>
-                            <h5 class="card-title">
-                                <a t-att-href="post['post_url']">
-                                    <t t-raw="post['name']" />
-                                </a>
-                            </h5>
-                        </div>    
+                        </div>
                     </div>
                 </div>
-            </div>
-        </t>
-    </t>
-</template>
-<!-- Snippet 5 Single end -->
-
-
-
-<!-- Snippet 6 Multi -->
-<template id="sh_blog_filter_s_test_6_item" name="Snippet 6">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
             </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+        </t>
+    </template>
+    <!-- Snippet 6 Single end -->
+    <!-- Snippet 7 Multi -->
+    <template id="sh_blog_filter_s_test_7_item" name="Snippet 7">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
 
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <div t-attf-class="#{column_classes}">
-                                <div class="box">
-                                    <div class="img-container">
-                                        <div class="img">
-                                            <a t-att-href="post['post_url']">
-                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%; border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <div class="sh_details">
-                                            <div class="sh_blog_cat">
-                                                <div class="sh_date">
-                                                    <span class="fa fa-clock-o"></span>
-                                                    <t t-raw="post['post_date']" />
-                                                </div>
-                                                
-                                            </div>
-                                            <div>
-                                                <t t-if='len(post["tag_ids"]) != 0'>
-                                                    <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
-                                                    <div class="sh_blog_cat">
-                                                        <t t-if='tags' t-foreach='tags' t-as='tag'>
-                                                            <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
-                                                        </t>
-                                                    </div>
-                                                </t>
-                                            </div>
-                                            <h5 class="card-title">
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="box">
+                                        <div class="img-container">
+                                            <div class="img">
                                                 <a t-att-href="post['post_url']">
-                                                    <t t-raw="post['name']" />
+                                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%; border-top-right-radius: 10px; border-top-left-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
                                                 </a>
-                                            </h5>
-                                            <p class="sh_card-text">
-                                                <t t-raw="post['subtitle']" />
-                                            </p>
-                                        </div>    
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-</template>
-<!-- Snippet 6 Single -->
-<template id="sh_blog_filter_s_test_6_item_single_tab" name="Snippet 6">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-        <t t-foreach="list_posts_dic" t-as="post">
-            <div t-attf-class="#{column_classes}">
-                <div class="box">
-                    <div class="img-container">
-                        <div class="img">
-                            <a t-att-href="post['post_url']">
-                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                            </a>
-                            
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="sh_details">
-                            <div class="sh_blog_cat">
-                                <div class="sh_date">
-                                    <span class="fa fa-clock-o"></span>
-                                    <t t-raw="post['post_date']" />
-                                </div>
-                                
-                            </div>
-                            <div>
-                                <t t-if='len(post["tag_ids"]) != 0'>
-                                    <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
-                                    <div class="sh_blog_cat">
-                                        <t t-if='tags' t-foreach='tags' t-as='tag'>
-                                            <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
-                                        </t>
-                                    </div>
-                                </t>
-                            </div>
-                            <h5 class="card-title">
-                                <a t-att-href="post['post_url']">
-                                    <t t-raw="post['name']" />
-                                </a>
-                            </h5>
-                            <p class="sh_card-text">
-                                <t t-raw="post['subtitle']" />
-                            </p>
-                        </div>    
-                    </div>
-                </div>
-            </div>
-        </t>
-    </t>
-</template>
-<!-- Snippet 6 Single end -->
-<!-- Snippet 7 Multi -->
-<template id="sh_blog_filter_s_test_7_item" name="Snippet 7">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <div t-attf-class="#{column_classes}">
-                                <div class="box">
-                                    <div class="img-container">
-                                        <div class="img">
-                                            <a t-att-href="post['post_url']">
-                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%; border-top-right-radius: 10px; border-top-left-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
-                                            <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
-                                        </div>
-                                        <div class="sh_details">
-                                            <div class="sh_blog_cat">
-                                                <div class="sh_date d-none">
-                                                    <t t-raw="post['post_date']" />
-                                                </div>
-                                                
                                             </div>
-                                            <div>
-                                                <t t-if='len(post["tag_ids"]) != 0'>
-                                                    <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
-                                                    <div class="sh_blog_cat d-none">
-                                                        <t t-if='tags' t-foreach='tags' t-as='tag'>
-                                                            <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
-                                                        </t>
+                                        </div>
+                                        <div class="content">
+                                            <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
+                                                <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                            </div>
+                                            <div class="sh_details">
+                                                <div class="sh_blog_cat">
+                                                    <div class="sh_date d-none">
+                                                        <t t-raw="post['post_date']" />
                                                     </div>
-                                                </t>
+
+                                                </div>
+                                                <div>
+                                                    <t t-if='len(post["tag_ids"]) != 0'>
+                                                        <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
+                                                        <div class="sh_blog_cat d-none">
+                                                            <t t-if='tags' t-foreach='tags' t-as='tag'>
+                                                                <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
+                                                            </t>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                                <h5 class="card-title">
+                                                    <a t-att-href="post['post_url']">
+                                                        <t t-raw="post['name']" />
+                                                    </a>
+                                                </h5>
+                                                <p class="sh_card-text">
+                                                    <t t-raw="post['subtitle']" />
+                                                </p>
                                             </div>
-                                            <h5 class="card-title">
-                                                <a t-att-href="post['post_url']">
-                                                    <t t-raw="post['name']" />
-                                                </a>
-                                            </h5>
-                                            <p class="sh_card-text">
-                                                <t t-raw="post['subtitle']" />
-                                            </p>
-                                        </div>    
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-</template>
-
-
-<!-- Snippet 7 Single -->
-<template id="sh_blog_filter_s_test_7_item_single_tab" name="Snippet 7">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-        <t t-foreach="list_posts_dic" t-as="post">
-            <div t-attf-class="#{column_classes}">
-                <div class="box">
-                    <div class="img-container">
-                        <div class="img">
-                            <a t-att-href="post['post_url']">
-                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;border-top-left-radius: 10px; border-top-right-radius: 10px;border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                            </a>
-                            
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
-                            <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
-                        </div>
-                        <div class="sh_details">
-                            <div class="sh_blog_cat">
-                                <div class="sh_date d-none">
-                                    <t t-raw="post['post_date']" />
-                                </div>
-                                
-                            </div>
-                            <div>
-                                <t t-if='len(post["tag_ids"]) != 0'>
-                                    <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
-                                    <div class="sh_blog_cat">
-                                        <t t-if='tags' t-foreach='tags' t-as='tag'>
-                                            <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
-                                        </t>
-                                    </div>
-                                </t>
-                            </div>
-                            <h5 class="card-title">
-                                <a t-att-href="post['post_url']">
-                                    <t t-raw="post['name']" />
-                                </a>
-                            </h5>
-                            <p class="sh_card-text">
-                                <t t-raw="post['subtitle']" />
-                            </p>
-                        </div>    
-                    </div>
-                </div>
-            </div>
-        </t>
-    </t>
-</template>
-<!-- Snippet 7 Single end -->
-
-
-<!-- Snippet 8 Multi -->
-<template id="sh_blog_filter_s_test_8_item" name="Snippet 8">
-    
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                            <div t-attf-class="#{column_classes}">
-                                <div id="my_blog" class="box">
-                                    <div class="img-container">
-                                        <div class="img">
-                                            <a t-att-href="post['post_url']">
-                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:500px;width: 100%; border-top-right-radius: 10px; border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                                            </a>
                                         </div>
                                     </div>
-                                    <div class="content">
-                                        <div class="sh_details">
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Snippet 7 Single -->
+    <template id="sh_blog_filter_s_test_7_item_single_tab" name="Snippet 7">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+            <t t-foreach="list_posts_dic" t-as="post">
+                <div t-attf-class="#{column_classes}">
+                    <div class="box">
+                        <div class="img-container">
+                            <div class="img">
+                                <a t-att-href="post['post_url']">
+                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;border-top-left-radius: 10px; border-top-right-radius: 10px;border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
+                                <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                            </div>
+                            <div class="sh_details">
+                                <div class="sh_blog_cat">
+                                    <div class="sh_date d-none">
+                                        <t t-raw="post['post_date']" />
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <t t-if='len(post["tag_ids"]) != 0'>
+                                        <t t-set='tags' t-value='request.env["blog.tag"].browse(post["tag_ids"])'></t>
+                                        <div class="sh_blog_cat">
+                                            <t t-if='tags' t-foreach='tags' t-as='tag'>
+                                                <a t-attf-href='/blog/tag/{{slug(tag)}}' t-if='tag' t-esc='tag.name' t-attf-title='#{tag.name}'/>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </div>
+                                <h5 class="card-title">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-raw="post['name']" />
+                                    </a>
+                                </h5>
+                                <p class="sh_card-text">
+                                    <t t-raw="post['subtitle']" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+    <!-- Snippet 7 Single end -->
+
+
+    <!-- Snippet 8 Multi -->
+    <template id="sh_blog_filter_s_test_8_item" name="Snippet 8">
+
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                                <div t-attf-class="#{column_classes}">
+                                    <div id="my_blog" class="box">
+                                        <div class="img-container">
+                                            <div class="img">
+                                                <a t-att-href="post['post_url']">
+                                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:500px;width: 100%; border-top-right-radius: 10px; border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="sh_details">
                                                 <div class="sh_date">
                                                     <div class="sh_number">
-                
+
                                                         <p>
                                                             <t t-esc="post['post_date_month_day']" />
                                                         </p>
@@ -951,21 +957,21 @@
                                                                     <img class="bg-light" src="sh_blog_filter_snippet/static/src/img/my_img/social.png" alt=""/>
                                                                 </span>
                                                             </a>
-                                                            
+
                                                             <a t-att-href="'mailto:'+post['mail']" class="col-12">
                                                                 <span>
-                                                                  <img src="sh_blog_filter_snippet/static/src/img/my_img/mail.png" alt=""/>
+                                                                    <img src="sh_blog_filter_snippet/static/src/img/my_img/mail.png" alt=""/>
                                                                 </span>
                                                             </a>
                                                             <a t-att-href="post['profile']" class="col-12">
                                                                 <span>
-                                                                  <img src="sh_blog_filter_snippet/static/src/img/my_img/contact.png" alt=""/>
+                                                                    <img src="sh_blog_filter_snippet/static/src/img/my_img/contact.png" alt=""/>
                                                                 </span>
                                                             </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
 
                                                 <div class="sh_tags">
                                                     <span class="fa fa-folder-o"></span>
@@ -978,48 +984,51 @@
                                                         </div>
                                                     </t>
                                                 </div>
-                                            
-                                            <h5 class="card-title">
-                                                <a t-att-href="post['post_url']">
-                                                    <t t-raw="post['name']" />
-                                                </a>
-                                            </h5>
-                                            
-                                        </div>    
+
+                                                <h5 class="card-title">
+                                                    <a t-att-href="post['post_url']">
+                                                        <t t-raw="post['name']" />
+                                                    </a>
+                                                </h5>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-    <div class="categori_link text-end me-3"><a href="/blog/uzman-gorusleri-4">Tüm Uzman Görüşleri <i class="fa fa-arrow-circle-right"></i></a></div>
-</template>
-
-
-<!-- Snippet 8 Single -->
-<template id="sh_blog_filter_s_test_8_item_single_tab" name="Snippet 8">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-        <t t-foreach="list_posts_dic" t-as="post">
-            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-            <div t-attf-class="#{column_classes}">
-                <div class="box">
-                    <div class="img-container">
-                        <div class="img">
-                            <a t-att-href="post['post_url']">
-                                <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:500px;width: 100%;border-top-left-radius: 10px; border-top-right-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
-                            </a>
-                            
+                            </t>
                         </div>
                     </div>
-                    <div class="content">
-                        <div class="sh_details">
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
+        </div>
+        <div class="categori_link text-end me-3">
+            <a href="/blog/uzman-gorusleri-4">Tüm Uzman Görüşleri <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </template>
+
+
+    <!-- Snippet 8 Single -->
+    <template id="sh_blog_filter_s_test_8_item_single_tab" name="Snippet 8">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+            <t t-foreach="list_posts_dic" t-as="post">
+                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                <div t-attf-class="#{column_classes}">
+                    <div class="box">
+                        <div class="img-container">
+                            <div class="img">
+                                <a t-att-href="post['post_url']">
+                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:500px;width: 100%;border-top-left-radius: 10px; border-top-right-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="sh_details">
                                 <div class="sh_date">
                                     <div class="sh_number">
 
@@ -1042,7 +1051,7 @@
                                     <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
                                         <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="sh_tags">
                                     <span class="fa fa-folder-o"></span>
@@ -1055,551 +1064,553 @@
                                         </div>
                                     </t>
                                 </div>
-                            
-                            <h5 class="card-title">
-                                <a t-att-href="post['post_url']">
-                                    <t t-raw="post['name']" />
-                                </a>
-                            </h5>
-                            
-                        </div>    
-                    </div>
-                </div>
-            </div>
-        </t>
-    </t>
-</template>
-<!-- Snippet 8 Single end -->
 
-
-<!-- Snippet 9 Multi start -->
-
-<template id="sh_blog_filter_s_test_9_item" name="Snippet 9">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                            <div t-attf-class="#{column_classes}">
-                                <div class="sh_blog_box">
-                                    <div class="sh_image">
-                                        <a t-att-href="post['post_url']">
-                                            <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                            <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                        </a>
-                                    </div>
-                                    <div class="sh_content_box">
-                                        <div class="sh_heading">
-                                            <a t-att-href="post['post_url']">
-                                                <t t-raw="post['name']" />
-                                            </a>
-                                        </div>
-        
-                                        <div class="sh_desc_box">
-                                            <div class="sh_user">
-                                                <div class="icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon icon-tabler icon-tabler-user" width="44"
-                                                        height="44" viewBox="0 0 24 24" stroke-width="1.5"
-                                                        stroke="currentColor" fill="none"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                                    </svg>
-                                                </div>
-                                                <div class="sh_text" t-if='blog and blog.sudo().author_id'>
-                                                    <a href="#" style='pointer-events: none;'>by </a><a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
-                                                </div>
-                                            </div>
-                                            <div class="sh_date">
-                                                <div class="icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon icon-tabler icon-tabler-clock"
-                                                        width="44" height="44" viewBox="0 0 24 24"
-                                                        stroke-width="1.5" stroke="currentColor" fill="none"
-                                                        stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                                                        <path d="M12 7v5l3 3" />
-                                                    </svg>
-                                                </div>
-                                                <div class="sh_text"><t t-raw="post['post_date']" /></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                        
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-</template>
-
-<!-- Snippet 9 Multi end -->
-
-
-<!-- Snippet 9 Single -->
-<template id="sh_blog_filter_s_test_9_item_single_tab" name="Snippet 9">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-            <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                <t t-foreach="list_posts_dic" t-as="post">
-                    <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                    <div t-attf-class="#{column_classes}">
-                        <div class="sh_blog_box">
-                            <div class="sh_image">
-                                <a t-att-href="post['post_url']">
-                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                </a>
-                            </div>
-                            <div class="sh_content_box">
-                                <div class="sh_heading">
+                                <h5 class="card-title">
                                     <a t-att-href="post['post_url']">
                                         <t t-raw="post['name']" />
                                     </a>
-                                </div>
+                                </h5>
 
-                                <div class="sh_desc_box">
-                                    <div class="sh_user">
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-user" width="44"
-                                                height="44" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" fill="none"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                            </svg>
-                                        </div>
-                                        <div class="sh_text" t-if='blog and blog.sudo().author_id'>
-                                            <a href="#" style='pointer-events: none;'>by </a><a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
-                                        </div>
-                                    </div>
-                                    <div class="sh_date">
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-clock"
-                                                width="44" height="44" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                                                <path d="M12 7v5l3 3" />
-                                            </svg>
-                                        </div>
-                                        <div class="sh_text"><t t-raw="post['post_date']" /></div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </t>
-            </div>
-        </div>
-    </t>
-</template>
-<!-- Snippet 9 Single -->
-
-
-<!-- Snippet 10 Multi start -->
-
-<template id="sh_blog_filter_s_test_10_item" name="Snippet 10">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                            <div t-attf-class="#{column_classes}">
-                                <div class="sh_blog_box">
-                                    <div class="sh_image_box">
-                                        <a t-att-href="post['post_url']">
-                                            <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                            <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:350px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                        </a>
-                                        <div class="sh_overlay">
-                                            <h3 class="sh_overlay_text">
-                                                <a t-att-href="post['post_url']">
-                                                    <t t-raw="post['name']" />
-                                                </a>
-                                            </h3>
-                                            <div class="sh_date">
-                                                <div class="date"><t t-esc="post['post_date_month_day']" /></div>
-                                                <div class="month"><t t-esc="post['post_date_month_name_short']" /></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                        
-                    </div>
                 </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
             </t>
-        </div>
-    </div>
-</template>
-
-<!-- Snippet 10 Multi end -->
+        </t>
+    </template>
+    <!-- Snippet 8 Single end -->
 
 
-<!-- Snippet 10 Single -->
-<template id="sh_blog_filter_s_test_10_item_single_tab" name="Snippet 10">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-            <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                <t t-foreach="list_posts_dic" t-as="post">
-                    <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                    <div t-attf-class="#{column_classes}">
-                        <div class="sh_blog_box">
-                            <div class="sh_image_box">
-                                <a t-att-href="post['post_url']">
-                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:350px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                </a>
-                                <div class="sh_overlay">
-                                    <h3 class="sh_overlay_text">
-                                        <a t-att-href="post['post_url']">
-                                            <t t-raw="post['name']" />
-                                        </a>
-                                    </h3>
-                                    <div class="sh_date">
-                                        <div class="date"><t t-esc="post['post_date_month_day']" /></div>
-                                        <div class="month"><t t-esc="post['post_date_month_name_short']" /></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Snippet 9 Multi start -->
+
+    <template id="sh_blog_filter_s_test_9_item" name="Snippet 9">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
                 </t>
-                
-            </div>
-        </div>
-    </t>
-</template>
-<!-- Snippet 10 Single -->
-
-
-<!-- Snippet 11 Multi start -->
-
-<template id="sh_blog_filter_s_test_11_item" name="Snippet 11">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                            <div t-attf-class="#{column_classes}">
-                                <div class="sh_blog_box">
-                                    <div class="sh_img">
-                                        <a t-att-href="post['post_url']">
-                                            <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                            <div class="sh_bg" t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                        </a>
-                                        <div class="sh_overlay_content">
-                                            <ul class="sh_desc">
-                                                <li><span class="fa fa-calendar"></span><t t-raw="post['post_date']" /></li>
-                                            </ul>
-                                            <div class="sh_content">
-                                                <a t-att-href="post['post_url']">
-                                                    <t t-raw="post['name']" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="sh_overlay_box">
-                                            <div class="circle-1"></div>
-                                            <div class="circle-2"></div>
-                                            <div class="sh_overlay_inner">
-                                                <ul class="sh_detail">
-                                                    <li><span class="fa fa-calendar"></span><t t-raw="post['post_date']" /></li>
-                                                </ul>
-                                                <div class="sh_title">
-                                                    <a t-att-href="post['post_url']">
-                                                        <t t-raw="post['name']" />
-                                                    </a>
-                                                </div>
-                                                <div class="sh_text">
-                                                    <t t-raw="post['subtitle']" />
-                                                </div>
-                                            </div>
-                                            <a t-att-href="post['post_url']" class="sh_btn">Continue Reading <span
-                                                    class="fa fa-angle-right"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                        
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-</template>
-<!-- Snippet 11 Multi end -->
-
-
-<!-- Snippet 11 Single -->
-<template id="sh_blog_filter_s_test_11_item_single_tab" name="Snippet 11">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-            <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                <t t-foreach="list_posts_dic" t-as="post">
-                    <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                    <div t-attf-class="#{column_classes}">
-                        <div class="sh_blog_box">
-                            <div class="sh_img">
-                                <a t-att-href="post['post_url']">
-                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                    <div class="sh_bg" t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                </a>
-                                <div class="sh_overlay_content">
-                                    <ul class="sh_desc">
-                                        <li><span class="fa fa-calendar"></span><t t-raw="post['post_date']" /></li>
-                                    </ul>
-                                    <div class="sh_content">
-                                        <a t-att-href="post['post_url']">
-                                            <t t-raw="post['name']" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="sh_overlay_box">
-                                    <div class="circle-1"></div>
-                                    <div class="circle-2"></div>
-                                    <div class="sh_overlay_inner">
-                                        <ul class="sh_detail">
-                                            <li><span class="fa fa-calendar"></span><t t-raw="post['post_date']" /></li>
-                                        </ul>
-                                        <div class="sh_title">
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="sh_blog_box">
+                                        <div class="sh_image">
                                             <a t-att-href="post['post_url']">
-                                                <t t-raw="post['name']" />
+                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
                                             </a>
                                         </div>
-                                        <div class="sh_text">
-                                            <t t-raw="post['subtitle']" />
+                                        <div class="sh_content_box">
+                                            <div class="sh_heading">
+                                                <a t-att-href="post['post_url']">
+                                                    <t t-raw="post['name']" />
+                                                </a>
+                                            </div>
+
+                                            <div class="sh_desc_box">
+                                                <div class="sh_user">
+                                                    <div class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="sh_text" t-if='blog and blog.sudo().author_id'>
+                                                        <a href="#" style='pointer-events: none;'>by </a>
+                                                        <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                                    </div>
+                                                </div>
+                                                <div class="sh_date">
+                                                    <div class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                                            <path d="M12 7v5l3 3" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="sh_text">
+                                                        <t t-raw="post['post_date']" />
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <a t-att-href="post['post_url']" class="sh_btn">Continue Reading <span
-                                            class="fa fa-angle-right"></span></a>
                                 </div>
-                            </div>
+                            </t>
+
                         </div>
                     </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
                 </t>
-                
             </div>
         </div>
-    </t>
-</template>
-<!-- Snippet 11 Single -->
+    </template>
+
+    <!-- Snippet 9 Multi end -->
 
 
-
-<!-- Snippet 12 Multi start -->
-
-<template id="sh_blog_filter_s_test_12_item" name="Snippet 12">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                                <div t-attf-class="#{column_classes}">
-                                <div class="sh_blog_box">
-                                    <div class="sh_img">
+    <!-- Snippet 9 Single -->
+    <template id="sh_blog_filter_s_test_9_item_single_tab" name="Snippet 9">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                    <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                    <t t-foreach="list_posts_dic" t-as="post">
+                        <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                        <div t-attf-class="#{column_classes}">
+                            <div class="sh_blog_box">
+                                <div class="sh_image">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                        <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                    </a>
+                                </div>
+                                <div class="sh_content_box">
+                                    <div class="sh_heading">
                                         <a t-att-href="post['post_url']">
-                                            <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                            <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                            <t t-raw="post['name']" />
                                         </a>
                                     </div>
-                                    <div class="sh_icon_details">
-                                        <div class="sh_icon_1"><span>
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="icon icon-tabler icon-tabler-user" width="44"
-                                                    height="44" viewBox="0 0 24 24" stroke-width="1.5"
-                                                    stroke="currentColor" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round">
+
+                                    <div class="sh_desc_box">
+                                        <div class="sh_user">
+                                            <div class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                                                     <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                                                 </svg>
-                                            </span>
-                                            <a href="#" style='pointer-events: none;'>by </a> <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/></div>
-                                        <div class="sh_icon_2"><span>
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="icon icon-tabler icon-tabler-clock" width="44"
-                                                    height="44" viewBox="0 0 24 24" stroke-width="1.5"
-                                                    stroke="currentColor" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round">
+                                            </div>
+                                            <div class="sh_text" t-if='blog and blog.sudo().author_id'>
+                                                <a href="#" style='pointer-events: none;'>by </a>
+                                                <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                            </div>
+                                        </div>
+                                        <div class="sh_date">
+                                            <div class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
                                                     <path d="M12 7v5l3 3" />
                                                 </svg>
-                                            </span>
-                                            <t t-raw="post['post_date']" />
+                                            </div>
+                                            <div class="sh_text">
+                                                <t t-raw="post['post_date']" />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="sh_blog_title">
-                                        <a t-att-href="post['post_url']">
-                                            <t t-raw="post['name']" />
-                                        </a>
-                                    </div>
-                                    <div class="sh_btn">
-                                        <a t-att-href="post['post_url']"> Read More Details<span class="fa fa-arrow-right"></span></a>
-                                    </div>
                                 </div>
-                            </div>
-                        </t>
-                        
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-</template>
-<!-- Snippet 12 Multi end -->
-
-
-<!-- Snippet 12 Single -->
-<template id="sh_blog_filter_s_test_12_item_single_tab" name="Snippet 12">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-            <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                <t t-foreach="list_posts_dic" t-as="post">
-                    <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
-                    <div t-attf-class="#{column_classes}">
-                        <div class="sh_blog_box">
-                            <div class="sh_img">
-                                <a t-att-href="post['post_url']">
-                                    <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
-                                </a>
-                            </div>
-                            <div class="sh_icon_details">
-                                <div class="sh_icon_1"><span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-user" width="44"
-                                            height="44" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                        </svg>
-                                    </span>
-                                    <a href="#" style='pointer-events: none;'>by </a> <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/></div>
-                                <div class="sh_icon_2"><span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-clock" width="44"
-                                            height="44" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                                            <path d="M12 7v5l3 3" />
-                                        </svg>
-                                    </span>
-                                    <t t-raw="post['post_date']" />
-                                </div>
-                            </div>
-                            <div class="sh_blog_title">
-                                <a t-att-href="post['post_url']">
-                                    <t t-raw="post['name']" />
-                                </a>
-                            </div>
-                            <div class="sh_btn">
-                                <a t-att-href="post['post_url']"> Read More Details<span class="fa fa-arrow-right"></span></a>
                             </div>
                         </div>
-                    </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- Snippet 9 Single -->
+
+
+    <!-- Snippet 10 Multi start -->
+
+    <template id="sh_blog_filter_s_test_10_item" name="Snippet 10">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
                 </t>
-                
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="sh_blog_box">
+                                        <div class="sh_image_box">
+                                            <a t-att-href="post['post_url']">
+                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:350px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                            </a>
+                                            <div class="sh_overlay">
+                                                <h3 class="sh_overlay_text">
+                                                    <a t-att-href="post['post_url']">
+                                                        <t t-raw="post['name']" />
+                                                    </a>
+                                                </h3>
+                                                <div class="sh_date">
+                                                    <div class="date">
+                                                        <t t-esc="post['post_date_month_day']" />
+                                                    </div>
+                                                    <div class="month">
+                                                        <t t-esc="post['post_date_month_name_short']" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+
+                        </div>
+                    </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
             </div>
         </div>
-    </t>
-</template>
-<!-- Snippet 12 Single -->
+    </template>
+
+    <!-- Snippet 10 Multi end -->
+
+
+    <!-- Snippet 10 Single -->
+    <template id="sh_blog_filter_s_test_10_item_single_tab" name="Snippet 10">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                    <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                    <t t-foreach="list_posts_dic" t-as="post">
+                        <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                        <div t-attf-class="#{column_classes}">
+                            <div class="sh_blog_box">
+                                <div class="sh_image_box">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                        <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:350px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                    </a>
+                                    <div class="sh_overlay">
+                                        <h3 class="sh_overlay_text">
+                                            <a t-att-href="post['post_url']">
+                                                <t t-raw="post['name']" />
+                                            </a>
+                                        </h3>
+                                        <div class="sh_date">
+                                            <div class="date">
+                                                <t t-esc="post['post_date_month_day']" />
+                                            </div>
+                                            <div class="month">
+                                                <t t-esc="post['post_date_month_name_short']" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- Snippet 10 Single -->
+
+
+    <!-- Snippet 11 Multi start -->
+
+    <template id="sh_blog_filter_s_test_11_item" name="Snippet 11">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="sh_blog_box">
+                                        <div class="sh_img">
+                                            <a t-att-href="post['post_url']">
+                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                <div class="sh_bg" t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                            </a>
+                                            <div class="sh_overlay_content">
+                                                <ul class="sh_desc">
+                                                    <li>
+                                                        <span class="fa fa-calendar"></span>
+                                                        <t t-raw="post['post_date']" />
+                                                    </li>
+                                                </ul>
+                                                <div class="sh_content">
+                                                    <a t-att-href="post['post_url']">
+                                                        <t t-raw="post['name']" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="sh_overlay_box">
+                                                <div class="circle-1"></div>
+                                                <div class="circle-2"></div>
+                                                <div class="sh_overlay_inner">
+                                                    <ul class="sh_detail">
+                                                        <li>
+                                                            <span class="fa fa-calendar"></span>
+                                                            <t t-raw="post['post_date']" />
+                                                        </li>
+                                                    </ul>
+                                                    <div class="sh_title">
+                                                        <a t-att-href="post['post_url']">
+                                                            <t t-raw="post['name']" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="sh_text">
+                                                        <t t-raw="post['subtitle']" />
+                                                    </div>
+                                                </div>
+                                                <a t-att-href="post['post_url']" class="sh_btn">Continue Reading <span class="fa fa-angle-right"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+
+                        </div>
+                    </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
+        </div>
+    </template>
+    <!-- Snippet 11 Multi end -->
+
+
+    <!-- Snippet 11 Single -->
+    <template id="sh_blog_filter_s_test_11_item_single_tab" name="Snippet 11">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                    <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                    <t t-foreach="list_posts_dic" t-as="post">
+                        <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                        <div t-attf-class="#{column_classes}">
+                            <div class="sh_blog_box">
+                                <div class="sh_img">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                        <div class="sh_bg" t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                    </a>
+                                    <div class="sh_overlay_content">
+                                        <ul class="sh_desc">
+                                            <li>
+                                                <span class="fa fa-calendar"></span>
+                                                <t t-raw="post['post_date']" />
+                                            </li>
+                                        </ul>
+                                        <div class="sh_content">
+                                            <a t-att-href="post['post_url']">
+                                                <t t-raw="post['name']" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="sh_overlay_box">
+                                        <div class="circle-1"></div>
+                                        <div class="circle-2"></div>
+                                        <div class="sh_overlay_inner">
+                                            <ul class="sh_detail">
+                                                <li>
+                                                    <span class="fa fa-calendar"></span>
+                                                    <t t-raw="post['post_date']" />
+                                                </li>
+                                            </ul>
+                                            <div class="sh_title">
+                                                <a t-att-href="post['post_url']">
+                                                    <t t-raw="post['name']" />
+                                                </a>
+                                            </div>
+                                            <div class="sh_text">
+                                                <t t-raw="post['subtitle']" />
+                                            </div>
+                                        </div>
+                                        <a t-att-href="post['post_url']" class="sh_btn">Continue Reading <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- Snippet 11 Single -->
+
+
+
+    <!-- Snippet 12 Multi start -->
+
+    <template id="sh_blog_filter_s_test_12_item" name="Snippet 12">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                                <div t-attf-class="#{column_classes}">
+                                    <div class="sh_blog_box">
+                                        <div class="sh_img">
+                                            <a t-att-href="post['post_url']">
+                                                <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                                <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                            </a>
+                                        </div>
+                                        <div class="sh_icon_details">
+                                            <div class="sh_icon_1">
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                    </svg>
+                                                </span>
+                                                <a href="#" style='pointer-events: none;'>by </a>
+                                                <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                            </div>
+                                            <div class="sh_icon_2">
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                                        <path d="M12 7v5l3 3" />
+                                                    </svg>
+                                                </span>
+                                                <t t-raw="post['post_date']" />
+                                            </div>
+                                        </div>
+                                        <div class="sh_blog_title">
+                                            <a t-att-href="post['post_url']">
+                                                <t t-raw="post['name']" />
+                                            </a>
+                                        </div>
+                                        <div class="sh_btn">
+                                            <a t-att-href="post['post_url']"> Read More Details<span class="fa fa-arrow-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+
+                        </div>
+                    </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
+        </div>
+    </template>
+    <!-- Snippet 12 Multi end -->
+
+
+    <!-- Snippet 12 Single -->
+    <template id="sh_blog_filter_s_test_12_item_single_tab" name="Snippet 12">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                    <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                    <t t-foreach="list_posts_dic" t-as="post">
+                        <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+                        <div t-attf-class="#{column_classes}">
+                            <div class="sh_blog_box">
+                                <div class="sh_img">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-set="cover_properties" t-value="post['cover_properties']" />
+                                        <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:250px;width: 100%;background-image: #{cover_properties.get('background-image')};" />
+                                    </a>
+                                </div>
+                                <div class="sh_icon_details">
+                                    <div class="sh_icon_1">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                            </svg>
+                                        </span>
+                                        <a href="#" style='pointer-events: none;'>by </a>
+                                        <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                    </div>
+                                    <div class="sh_icon_2">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                                <path d="M12 7v5l3 3" />
+                                            </svg>
+                                        </span>
+                                        <t t-raw="post['post_date']" />
+                                    </div>
+                                </div>
+                                <div class="sh_blog_title">
+                                    <a t-att-href="post['post_url']">
+                                        <t t-raw="post['name']" />
+                                    </a>
+                                </div>
+                                <div class="sh_btn">
+                                    <a t-att-href="post['post_url']"> Read More Details<span class="fa fa-arrow-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- Snippet 12 Single -->
 
 
 
@@ -1607,44 +1618,39 @@
 
 
 
-<!-- Snippet 13 Multi start -->
+    <!-- Snippet 13 Multi start -->
 
-<template id="sh_blog_filter_s_test_13_item" name="Snippet 13">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+    <template id="sh_blog_filter_s_test_13_item" name="Snippet 13">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
                                 <div t-attf-class="#{column_classes}">
                                     <div class="sh_blog_box">
                                         <div class="sh_blog_inner">
                                             <div class="sh_date">
                                                 <div class="sh_date_desc">
                                                     <span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="icon icon-tabler icon-tabler-calendar"
-                                                            width="44" height="44" viewBox="0 0 24 24"
-                                                            stroke-width="1.5" stroke="currentColor" fill="none"
-                                                            stroke-linecap="round" stroke-linejoin="round">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                            <path
-                                                                d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                                                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
                                                             <path d="M16 3v4" />
                                                             <path d="M8 3v4" />
                                                             <path d="M4 11h16" />
@@ -1678,48 +1684,43 @@
                                                     <t t-raw="post['subtitle']" />
                                                 </div>
                                                 <div class="sh_btn">
-                                                    <a t-att-href="post['post_url']"> Read More Details<span
-                                                            class="fa fa-arrow-right"></span></a>
+                                                    <a t-att-href="post['post_url']"> Read More Details<span class="fa fa-arrow-right"></span>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                            </div>
-                        </t>
-                        
+                                </div>
+                            </t>
+
+                        </div>
                     </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
         </div>
-    </div>
-</template>
-<!-- Snippet 13 Multi end -->
+    </template>
+    <!-- Snippet 13 Multi end -->
 
 
-<!-- Snippet 13 Single -->
-<template id="sh_blog_filter_s_test_13_item_single_tab" name="Snippet 13">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-            <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                <t t-foreach="list_posts_dic" t-as="post">
-                    <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+    <!-- Snippet 13 Single -->
+    <template id="sh_blog_filter_s_test_13_item_single_tab" name="Snippet 13">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                    <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                    <t t-foreach="list_posts_dic" t-as="post">
+                        <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
                         <div t-attf-class="#{column_classes}">
                             <div class="sh_blog_box">
                                 <div class="sh_blog_inner">
                                     <div class="sh_date">
                                         <div class="sh_date_desc">
                                             <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="icon icon-tabler icon-tabler-calendar"
-                                                    width="44" height="44" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" fill="none"
-                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                                                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
                                                     <path d="M16 3v4" />
                                                     <path d="M8 3v4" />
                                                     <path d="M4 11h16" />
@@ -1753,45 +1754,45 @@
                                             <t t-raw="post['subtitle']" />
                                         </div>
                                         <div class="sh_btn">
-                                            <a t-att-href="post['post_url']"> Read More Details<span
-                                                    class="fa fa-arrow-right"></span></a>
+                                            <a t-att-href="post['post_url']"> Read More Details<span class="fa fa-arrow-right"></span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                </t>
-                
+                        </div>
+                    </t>
+
+                </div>
             </div>
-        </div>
-    </t>
-</template>
-<!-- Snippet 13 Single -->
+        </t>
+    </template>
+    <!-- Snippet 13 Single -->
 
-<!-- Snippet 14 Multi start -->
+    <!-- Snippet 14 Multi start -->
 
-<template id="sh_blog_filter_s_test_14_item" name="Snippet 14">
-    <div class="justify-content-center">
-        <ul class="nav nav-tabs" role="tablist">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                <li class="nav-item">
-                    <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                        <t t-raw="tab_dic['name']" />
-                    </a>
-                </li>
-                <t t-set="active_class" t-value="''" />
-            </t>
-        </ul>
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+    <template id="sh_blog_filter_s_test_14_item" name="Snippet 14">
+        <div class="justify-content-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-foreach="list_tabs_dic" t-as="tab_dic">
+                    <li class="nav-item">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                            <t t-raw="tab_dic['name']" />
+                        </a>
+                    </li>
+                    <t t-set="active_class" t-value="''" />
+                </t>
+            </ul>
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
                                 <div t-attf-class="#{column_classes}">
                                     <div class="sh_blog_box">
                                         <div class="sh_blog_inner">
@@ -1836,28 +1837,28 @@
                                             </div>
                                         </div>
                                     </div>
-                            </div>
-                        </t>
-                        
+                                </div>
+                            </t>
+
+                        </div>
                     </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
+                </t>
+            </div>
         </div>
-    </div>
-</template>
-<!-- Snippet 14 Multi end -->
+    </template>
+    <!-- Snippet 14 Multi end -->
 
 
-<!-- Snippet 14 Single -->
-<template id="sh_blog_filter_s_test_14_item_single_tab" name="Snippet 14">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-            <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                <t t-foreach="list_posts_dic" t-as="post">
-                    <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+    <!-- Snippet 14 Single -->
+    <template id="sh_blog_filter_s_test_14_item_single_tab" name="Snippet 14">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                    <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                    <t t-foreach="list_posts_dic" t-as="post">
+                        <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
                         <div t-attf-class="#{column_classes}">
                             <div class="sh_blog_box">
                                 <div class="sh_blog_inner">
@@ -1902,63 +1903,73 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- Snippet 14 Single -->
+
+    <!-- Snippet 15 Multi start -->
+    <template id="sh_blog_filter_s_test_15_item" name="Snippet 15">
+        <div class="announcement-box col-6 p-3 mb-4 border rounded shadow-sm bg-light">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0">
+                    <i class="fa fa-bullhorn me-2" aria-hidden="true"></i> Duyurular
+                </h3>
+                <a href="#" class="text-decoration-none text-primary fw-bold">Tüm Duyurular</a>
+            </div>
+
+            <div class="tab-content">
+                <t t-set="active_class" t-value="'active'" />
+                <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
+                <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+                    <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                        <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" class="tab-pane-content">
+                            <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                            <t t-foreach="list_posts_dic" t-as="post">
+                                <div class="post-item d-flex border-bottom pb-2 mb-3 rounded bg-white shadow-sm align-items-center">
+                                    <div class="post-date-box text-center">
+                                        <div class="month fw-bold text-white">
+                                            <t t-esc="post['post_date_month_name']"/>
+                                        </div>
+                                        <div class="day fs-4 text-dark">
+                                            <t t-esc="post['post_date_month_day']" />
+                                        </div>
+                                    </div>
+                                    <div class="post-content">
+                                        <h5 class="post-title mb-1">
+                                            <a t-att-href="post['post_url']" class="text-dark fw-semibold">
+                                                <t t-raw="post['name']" />
+                                            </a>
+                                        </h5>
+                                        <p class="post-description mb-0 text-muted">
+                                            <t t-esc="post['subtitle']" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
                     </div>
+                    <t t-set="active_class" t-value="''" />
+                    <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
                 </t>
-                
             </div>
         </div>
-    </t>
-</template>
-<!-- Snippet 14 Single -->
-
- <!-- Snippet 15 Multi start -->
-<template id="sh_blog_filter_s_test_15_item" name="Snippet 15">
-    <div class="announcement-box col-6 p-3 mb-4 border rounded shadow-sm bg-light">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="mb-0">
-                <i class="fa fa-bullhorn me-2" aria-hidden="true"></i> Duyurular
-            </h3>
-            <a href="#" class="text-decoration-none text-primary fw-bold">Tüm Duyurular</a>
-        </div>
-
-        <div class="tab-content">
-            <t t-set="active_class" t-value="'active'" />
-            <t t-set="is_first_tab_pane_data_loaded" t-value="true" />
-            <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-                <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-                    <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" class="tab-pane-content">
-                        <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                        <t t-foreach="list_posts_dic" t-as="post">
-                            <div class="post-item d-flex border-bottom pb-2 mb-3 rounded bg-white shadow-sm align-items-center">
-                                <div class="post-date-box text-center">
-                                    <div class="month fw-bold text-white"><t t-esc="post['post_date_month_name']"/></div>
-                                    <div class="day fs-4 text-dark"><t t-esc="post['post_date_month_day']" /></div>
-                                </div>
-                                <div class="post-content">
-                                    <h5 class="post-title mb-1"><a t-att-href="post['post_url']" class="text-dark fw-semibold"><t t-raw="post['name']" /></a></h5>
-                                    <p class="post-description mb-0 text-muted"><t t-esc="post['subtitle']" /></p>
-                                </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-                <t t-set="active_class" t-value="''" />
-                <t t-set="is_first_tab_pane_data_loaded" t-value="false" />
-            </t>
-        </div>
-    </div>
-</template>
+    </template>
 
     <!-- Snippet 15 Multi end -->
-<!-- Snippet 15 Single -->
-<template id="sh_blog_filter_s_test_15_item_single_tab" name="Snippet 15">
-    <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
-        <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
-            <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
-                <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
-                <t t-foreach="list_posts_dic" t-as="post">
-                    <!-- <b t-esc='post'></b> -->
-                    <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
+    <!-- Snippet 15 Single -->
+    <template id="sh_blog_filter_s_test_15_item_single_tab" name="Snippet 15">
+        <t t-foreach="list_tab_panes_dic" t-as="tab_pane_dic">
+            <div t-att-class="'tab-pane show %s' %(active_class)" t-att-id="tab_pane_dic['id_tab_pane']" role="tabpanel" aria-labelledby="all-tab">
+                <div t-attf-data-loaded="#{is_first_tab_pane_data_loaded}" t-attf-class="js_cls_tab_pane_content #{row_classes}">
+                    <t t-set="list_posts_dic" t-value="tab_pane_dic['list_posts_dic']" />
+                    <t t-foreach="list_posts_dic" t-as="post">
+                        <!-- <b t-esc='post'></b> -->
+                        <t t-set='blog' t-value='request.env["blog.post"].browse(post["id"])'/>
                         <div t-attf-class="#{column_classes}">
                             <div class="sh_blog_box">
                                 <div class="sh_img">
@@ -1976,7 +1987,9 @@
                                                 </li>
                                                 <li class="sh_item">
                                                     <span class="sh_post">Posted by</span>
-                                                    <span class="sh_admin"><a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/></span>
+                                                    <span class="sh_admin">
+                                                        <a t-esc='blog.sudo().author_id.name' href="#" style='pointer-events: none;'/>
+                                                    </span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -2006,12 +2019,12 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                </t>
-                
+                        </div>
+                    </t>
+
+                </div>
             </div>
-        </div>
-    </t>
-</template>
-<!-- Snippet 15 Single -->
+        </t>
+    </template>
+    <!-- Snippet 15 Single -->
 </odoo>
