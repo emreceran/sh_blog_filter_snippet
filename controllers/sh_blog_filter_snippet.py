@@ -52,7 +52,6 @@ class Main(http.Controller):
             linkedin = resuser.linkedin
             profile = resuser.profilePage
             mail = resuser.login
-<<<<<<< HEAD
             
             content2 = BeautifulSoup(post['content'], 'html.parser').get_text()
             if len(content2) <= 200:
@@ -60,11 +59,6 @@ class Main(http.Controller):
             else:
                 content = content2[:200].rsplit(' ', 1)[0] + '...'
                 
-                
-=======
-
-
->>>>>>> d7e401eeb465c8305136a5ef6c7ddfef0c8611d7
             # Sonuçları güncelliyoruz
             res_post.update({
                 'cover_properties': cover_properties,
