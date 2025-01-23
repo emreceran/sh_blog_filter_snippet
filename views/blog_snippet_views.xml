@@ -179,45 +179,48 @@
                 data-item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_8_item"
                 data-single_tab_item_template="sh_blog_filter_snippet.sh_blog_filter_s_test_8_item_single_tab"
         >
+            <div class="container">
+                <div>
+                    <style>
+                        .mevzuat-title {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 20px 0;
 
-            <div>
-                <style>
-                    .mevzuat-title {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin: 20px 0;
+                        }
 
-                    }
+                        .mevzuat-title::before,
+                        .mevzuat-title::after {
+                        content: '';
+                        flex: 1;
+                        height: 1px;
+                        background-color: #001f3f; /* Çizgi rengini buradan değiştirebilirsiniz */
+                        margin: 0 10px; /* Yazı ile çizgi arasındaki boşluk */
+                        max-width: 30px;
 
-                    .mevzuat-title::before,
-                    .mevzuat-title::after {
-                    content: '';
-                    flex: 1;
-                    height: 1px;
-                    background-color: #001f3f; /* Çizgi rengini buradan değiştirebilirsiniz */
-                    margin: 0 10px; /* Yazı ile çizgi arasındaki boşluk */
-                    max-width: 30px;
+                        }
 
-                    }
+                        .mevzuat-title span {
 
-                    .mevzuat-title span {
+                        font-weight: 500; /* Yazının kalınlığını buradan ayarlayabilirsiniz */
 
-                    font-weight: 500; /* Yazının kalınlığını buradan ayarlayabilirsiniz */
-
-                    letter-spacing: 1px;
-                    color: #203878;
-                    text-transform: uppercase;
-                    font-size: 15px;
-                    position: relative;
-                    }
-                    }
-                </style>
-                <div class="mevzuat-title">
-                    <span>Hizmetler</span>
+                        letter-spacing: 1px;
+                        color: #203878;
+                        text-transform: uppercase;
+                        font-size: 15px;
+                        position: relative;
+                        }
+                        }
+                    </style>
+                    <div class="mevzuat-title">
+                        <span>Hizmetler</span>
+                    </div>
                 </div>
-            </div>
+                <div class="js_cls_render_dynamic_post_area o_not_editable" />
 
+
+            </div>
         </section>
     </template>
     <!-- Sh Snippet 8 -->

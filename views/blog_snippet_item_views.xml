@@ -915,11 +915,11 @@
             <ul class="nav nav-tabs" role="tablist">
                 <t t-set="active_class" t-value="'active'" />
                 <t t-foreach="list_tabs_dic" t-as="tab_dic">
-                    <li class="nav-item">
-                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
-                            <t t-raw="tab_dic['name']" />
-                        </a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">-->
+<!--                            <t t-raw="tab_dic['name']" />-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <t t-set="active_class" t-value="''" />
                 </t>
             </ul>
