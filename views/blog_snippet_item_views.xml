@@ -568,7 +568,7 @@
                                                     </div>
                                                 </div>
                                                 <h5 class="card-title">
-                                                    <a t-att-href="post['post_url']">
+                                                    <a class="fs-5" t-att-href="post['post_url']">
                                                         <t t-raw="post['name']" />
                                                     </a>
                                                 </h5>
@@ -1007,8 +1007,8 @@
                                                     </t>
                                                 </div>
 
-                                                <h5 class="card-title">
-                                                    <a t-att-href="post['post_url']">
+                                                <h5 class="card-title ">
+                                                    <a class="fs-5" t-att-href="post['post_url']">
                                                         <t t-raw="post['name']" />
                                                     </a>
                                                 </h5>

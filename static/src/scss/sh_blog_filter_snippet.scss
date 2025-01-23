@@ -766,14 +766,18 @@
 				&:after {
 					padding: 8px;
 					opacity: 1;
+					transform: translateY(0);
 				}
 			}
 		}
 		.img-container {
 			position: relative;
+			overflow: hidden;
 			&:after {
-				content: attr(data-content); color:white; height: 100%;width: 100%;transition: all 0.7s ease-in-out;background: rgba(0,0,0,.5);opacity: 0;position: absolute;top: 0;left: 0;border-top-left-radius: 10px;border-top-right-radius: 10px;
+				content: attr(data-content); color:white; height: 100%;width: 100%;transition: all 0.5s ease-in-out;background: rgba(0,0,0,.5);opacity: 0;position: absolute;top: 0;left: 0;border-top-left-radius: 10px;border-top-right-radius: 10px;
+				transform: translateY(100%);	text-align: justify;
 			}
+
 		}
 	}
 	.owl-carousel.owl-theme.owl-loaded.owl-drag {
