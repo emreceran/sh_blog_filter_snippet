@@ -571,7 +571,7 @@
                                                 </div>
                                                 <h5 class="card-title">
                                                     <a class="fs-5" t-att-href="post['post_url']">
-                                                        <span style="font-size: 16px; color: #001f3f;font-weight: bold;">
+                                                        <span style="font-size: 16px; color: #001f3f;font-weight: bold; font-family: 'Roboto Condensed', 'Odoo Unicode Support Noto', sans-serif !important;">
                                                             <t t-raw="post['name']" />
                                                         </span>
                                                     </a>

@@ -122,7 +122,7 @@
         >
             <div class="container">
                 <div class="heading text-center">
-                    <span>Latest Articles</span>
+                    <span class="mb-2">Latest Articles</span>
                     <h2 class="text-center">
                         Get to know us more from our blog section
                     </h2>
