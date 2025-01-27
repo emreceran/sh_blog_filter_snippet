@@ -693,7 +693,7 @@
 	padding: 50px 0px;background: url('/sh_blog_filter_snippet/static/src/img/sh_blog_8.jpg');background-position: top left;background-size: cover;background-attachment: fixed;
 	.container {
 		.heading {
-			color: #616161;font-weight: 500;font-size: 32px;letter-spacing: 1px;text-align: center;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;width: 80%;max-width: 80%;margin: 0 auto;
+			color: #616161;font-weight: 500;font-size: 16px;letter-spacing: 1px;text-align: center;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;width: 80%;max-width: 80%;margin: 0 auto;
 			span {
 				color: o-color(o-color-1);text-transform: uppercase;font-size: 15px;position: relative;
 				&:before {
@@ -704,7 +704,7 @@
 				}
 			}
 			h2 {
-				font-size: 30px;margin-top: 11px;margin-bottom: 30px;line-height: 35px;color: #1d293e;font-weight: 600;
+				font-size: 16px;margin-top: 11px;margin-bottom: 30px;line-height: 35px;color: #1d293e;font-weight: 600;
 			}
 		}
 	}
@@ -887,7 +887,7 @@
 			}
 			.card-title {
 				a {
-					color: #fff;text-decoration: underline;
+					color: #fff;text-decoration: underline; font-size:16px !important;
 				}
 			}
 			.sh_blog_cat {
@@ -925,7 +925,7 @@
 		position: absolute;top: 0;left: 0;display: flex;justify-content: center;align-items: center;background: #fff;height: 250px;width: 100%;border: 1px solid #e7e7e7;border-radius: 10px;padding: 50px 40px;
 		.card-title {
 			a {
-				color: o-color(o-color-1);font-weight: 600;font-size: 20px;margin-bottom: 10px;display: block;-webkit-transition: all 0.4s ease 0s;-o-transition: all 0.4s ease 0s;transition: all 0.4s ease 0s;line-height: 27px;text-decoration: none;margin-top: 10px;transition: all 0.3s;
+				color: o-color(o-color-1);font-weight: 600;font-size: 16px;margin-bottom: 10px;display: block;-webkit-transition: all 0.4s ease 0s;-o-transition: all 0.4s ease 0s;transition: all 0.4s ease 0s;line-height: 27px;text-decoration: none;margin-top: 10px;transition: all 0.3s;
 			}
 		}
 		.sh_card-text {
