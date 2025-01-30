@@ -100,9 +100,6 @@
             <div class="container">
                 <div class="heading text-center">
                     <span>Latest Articles</span>
-                    <h2 class="text-center">
-                        Latest News and Articles
-                    </h2>
                 </div>
                 <div class="js_cls_render_dynamic_post_area o_not_editable" />
             </div>
@@ -122,10 +119,7 @@
         >
             <div class="container">
                 <div class="heading text-center">
-                    <span class="mb-2">Latest Articles</span>
-                    <h2 class="text-center">
-                        Get to know us more from our blog section
-                    </h2>
+                    <span class="mb-0">Latest Articles</span>
                 </div>
                 <div class="js_cls_render_dynamic_post_area o_not_editable" />
             </div>
