@@ -197,7 +197,7 @@
 
                         .mevzuat-title span {
 
-                        font-weight: 500; /* Yazının kalınlığını buradan ayarlayabilirsiniz */
+                        font-weight: bolder; /* Yazının kalınlığını buradan ayarlayabilirsiniz */
 
                         letter-spacing: 1px;
                         color: #203878;
