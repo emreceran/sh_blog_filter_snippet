@@ -943,7 +943,7 @@
                                             <div class="img">
                                                 <a t-att-href="post['post_url']">
                                                     <t t-set="cover_properties" t-value="post['cover_properties']" />
-                                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:300px;width: 100%; border-top-right-radius: 10px; border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
+                                                    <div t-attf-style="background-size: cover;background-position: center;background-repeat: no-repeat;height:500px;width: 100%; border-top-right-radius: 10px; border-radius: 10px; background-image: #{cover_properties.get('background-image')};" />
                                                 </a>
                                             </div>
                                         </div>
