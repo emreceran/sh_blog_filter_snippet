@@ -124,10 +124,20 @@ class Main(http.Controller):
         if filter and filter.tab_blog_post_line:
             for tab in filter.tab_blog_post_line:
                 token = generate_slider_tab_token()
+                
+                match tab.name:
+                    case "Tüm Uzman Görüşleri":
+                        href = "/blog/uzman-gorusleri-4"
+                    case "Tüm Sektörel Haberler":
+                        href = "/blog/sektorel-haberler-6"
+                    case "Tüm Mevuzat":
+                        href = "/blog/mevzuatlar-7"
+                    case _:
+                        href = "#"  # Varsayılan href
                 nav_tab_dic = {
                     'id': tab.id,
                     'name': tab.name,
-                    'href': '#nav_tab_' + token
+                    'href': href
                 }
 
                 list_tabs_dic.append(nav_tab_dic)

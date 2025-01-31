@@ -127,6 +127,7 @@ publicWidget.registry.sh_blog_filter_snippet_s_post = publicWidget.Widget.extend
     _onClickTab: function (ev) {
         var self = this;
         var tab_pane_id = $(ev.currentTarget).attr("href");
+        tab_pane_id = $.escapeSelector(tab_pane_id);
         var tab_id = parseInt($(ev.currentTarget).attr("data-tab_id")) || false;
         var $tab_pane_content = self.$el.find(tab_pane_id).find(".js_cls_tab_pane_content");
         var is_data_loaded = $tab_pane_content.attr("data-loaded");

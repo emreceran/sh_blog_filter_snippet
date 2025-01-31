@@ -519,12 +519,12 @@
         white-space: normal; /* Metni çok satır yapar */
     }
         </style>
-        <div class="justify-content-center mt-0" >
+        <div class="justify-content-center mt-0">
             <ul class="nav nav-tabs" role="tablist">
                 <t t-set="active_class" t-value="'active'" />
                 <t t-foreach="list_tabs_dic" t-as="tab_dic">
                     <li class="nav-item">
-                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic.get('href', '#')" role="tab" aria-controls="all" aria-selected="true">
                             <t t-raw="tab_dic['name']" />
                         </a>
                     </li>
@@ -588,10 +588,10 @@
                 </t>
             </div>
         </div>
-<!--        <div class="categori_link text-end me-3">-->
-<!--            <a href="/blog/sektorel-haberler-5">Tüm Sektörel Haberler <i class="fa fa-arrow-circle-right"></i>-->
-<!--            </a>-->
-<!--        </div>-->
+        <!--        <div class="categori_link text-end me-3">-->
+        <!--            <a href="/blog/sektorel-haberler-5">Tüm Sektörel Haberler <i class="fa fa-arrow-circle-right"></i>-->
+        <!--            </a>-->
+        <!--        </div>-->
     </template>
 
 
@@ -642,7 +642,8 @@
                                 </div>
                                 <h5 class="card-title">
                                     <a t-att-href="post['post_url']">
-                                        <span style="font-size:16px; color: red"> asd <t t-raw="post['name']" /></span>
+                                        <span style="font-size:16px; color: red"> asd <t t-raw="post['name']" />
+                                        </span>
                                     </a>
                                 </h5>
                             </div>
@@ -920,7 +921,7 @@
                 <t t-set="active_class" t-value="'active'" />
                 <t t-foreach="list_tabs_dic" t-as="tab_dic">
                     <li class="nav-item">
-                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic['href']" role="tab" aria-controls="all" aria-selected="true">
+                        <a t-att-class="'js_cls_tab_a nav-link %s' %(active_class)" class="nav-link" t-att-data-tab_id="tab_dic['id']" data-bs-toggle="tab" t-att-href="tab_dic.get('href', '#')" role="tab" aria-controls="all" aria-selected="true">
                             <t t-raw="tab_dic['name']" />
                         </a>
                     </li>
@@ -1029,10 +1030,10 @@
                 </t>
             </div>
         </div>
-<!--        <div class="categori_link text-end me-3">-->
-<!--            <a href="/blog/uzman-gorusleri-4">Tüm Uzman Görüşleri <i class="fa fa-arrow-circle-right"></i>-->
-<!--            </a>-->
-<!--        </div>-->
+        <!--        <div class="categori_link text-end me-3">-->
+        <!--            <a href="/blog/uzman-gorusleri-4">Tüm Uzman Görüşleri <i class="fa fa-arrow-circle-right"></i>-->
+        <!--            </a>-->
+        <!--        </div>-->
     </template>
 
 
