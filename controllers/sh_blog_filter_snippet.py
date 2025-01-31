@@ -126,8 +126,10 @@ class Main(http.Controller):
                 token = generate_slider_tab_token()
                 
                 match tab.name:
-                    case "Tüm Uzman Görüşleri":
-                        href = "/blog/uzman-gorusleri-4"
+                    # case "Tüm Uzman Görüşleri":
+                    case "uzman görüşleri":
+                        # href = "/blog/uzman-gorusleri-4"
+                        href = "/contactus"
                     case "Tüm Sektörel Haberler":
                         href = "/blog/sektorel-haberler-6"
                     case "Tüm Mevuzat":
