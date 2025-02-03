@@ -775,7 +775,8 @@
 			overflow: hidden;
 			&:after {
 				content: attr(data-content); color: black; height: 100%;width: 100%;transition: all 0.5s ease-in-out;background: #f2f2f2 ;opacity: 0;position: absolute;top: 50%;left: 0;
-				transform: translateY(100%);	text-align: justify; font-size: 12px; padding: 5px;
+				transform: translateY(100%);	text-align: justify; font-size: 12px; padding: 5px; font-family: 'Merriweather';
+
 			}
 
 		}

@@ -510,14 +510,16 @@
     <!-- Snippet 5 Multi -->
     <template id="sh_blog_filter_s_test_5_item" name="Snippet 5">
         <style>
-    .card-title {
-        display: -webkit-box;
-        -webkit-line-clamp: 1; /* Maksimum 2 satır */
-        -webkit-box-orient: vertical;
-        overflow: hidden; /* Taşan metni gizler */
-        text-overflow: ellipsis; /* Fazla metni ... ile gösterir */
-        white-space: normal; /* Metni çok satır yapar */
-    }
+            .card-title {
+                @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap');
+                display: -webkit-box;
+                -webkit-line-clamp: 1; /* Maksimum 2 satır */
+                -webkit-box-orient: vertical;
+                overflow: hidden; /* Taşan metni gizler */
+                text-overflow: ellipsis; /* Fazla metni ... ile gösterir */
+                white-space: normal; /* Metni çok satır yapar */
+            }
+           
         </style>
         <div class="justify-content-center mt-0">
             <ul class="nav nav-tabs" role="tablist">
