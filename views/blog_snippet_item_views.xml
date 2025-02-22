@@ -409,7 +409,7 @@
                                                 <div class="sh_box">
                                                     <div class="img_1">
                                                         <div class="sh_main_img" t-if='blog and blog.author_id'>
-                                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)"/>
+                                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)" loading="lazy"/>
                                                         </div>
                                                     </div>
                                                     <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
@@ -478,7 +478,7 @@
                                 <div class="sh_box">
                                     <div class="img_1">
                                         <div class="sh_main_img" t-if='blog and blog.author_id'>
-                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)"/>
+                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)" loading="lazy" />
                                         </div>
                                     </div>
                                     <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
@@ -509,6 +509,7 @@
 
     <!-- Snippet 5 Multi -->
     <template id="sh_blog_filter_s_test_5_item" name="Snippet 5">
+
         <style>
             .card-title {
                 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap');
@@ -519,9 +520,10 @@
                 text-overflow: ellipsis; /* Fazla metni ... ile gösterir */
                 white-space: normal; /* Metni çok satır yapar */
             }
-           
+
         </style>
         <div class="justify-content-center mt-0">
+
             <ul class="nav nav-tabs" role="tablist">
                 <t t-set="active_class" t-value="'active'" />
                 <t t-foreach="list_tabs_dic" t-as="tab_dic">
@@ -968,7 +970,7 @@
                                                 <div class="sh_box">
                                                     <div class="img_1">
                                                         <div class="sh_main_img" t-if="blog and blog.author_id">
-                                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)" />
+                                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)" loading="lazy"/>
                                                         </div>
                                                     </div>
                                                     <div class="sh_admin_text" t-if="blog and blog.sudo().author_id">
@@ -979,22 +981,22 @@
                                                     <div id="my_modal" class="popup-modal container ">
                                                         <div class="row popup-content text-center">
                                                             <!--                                                            <a t-att-href="blog.sudo().author_id.linkedin" class="col-12">-->
-                                                            <a t-att-href=" " class="col-12">
+                                                            <a t-att-href="'/hakkmzda'" class="col-12">
                                                                 <span>
-                                                                    <img class="bg-light" src="sh_blog_filter_snippet/static/src/img/my_img/social.png" alt=""/>
+                                                                    <img class="bg-light" src="sh_blog_filter_snippet/static/src/img/my_img/social.png" loading="lazy" alt=""/>
                                                                 </span>
                                                             </a>
 
                                                             <!--                                                            <a t-att-href="'blog.sudo().author_id.login" class="col-12">-->
-                                                            <a t-att-href=" " class="col-12">
+                                                            <a t-att-href="'/hakkmzda'" class="col-12">
                                                                 <span>
-                                                                    <img src="sh_blog_filter_snippet/static/src/img/my_img/mail.png" alt=""/>
+                                                                    <img src="sh_blog_filter_snippet/static/src/img/my_img/mail.png" loading="lazy" alt=""/>
                                                                 </span>
                                                             </a>
                                                             <!--                                                            <a t-att-href="blog.sudo().author_id.profilePage" class="col-12">-->
-                                                            <a t-att-href=" " class="col-12">
+                                                            <a t-att-href="'/hakkmzda'" class="col-12">
                                                                 <span>
-                                                                    <img src="sh_blog_filter_snippet/static/src/img/my_img/contact.png" alt=""/>
+                                                                    <img src="sh_blog_filter_snippet/static/src/img/my_img/contact.png" loading="lazy" alt=""/>
                                                                 </span>
                                                             </a>
                                                         </div>
@@ -1074,7 +1076,7 @@
                                 <div class="sh_box bg-danger">
                                     <div class="img_1 bg-danger">
                                         <div class="sh_main_img" t-if='blog and blog.author_id'>
-                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)"/>
+                                            <img t-att-src="image_data_uri(blog.sudo().author_id.image_1920)" loading="lazy"/>
                                         </div>
                                     </div>
                                     <div class="sh_admin_text" t-if='blog and blog.sudo().author_id'>
@@ -2011,7 +2013,7 @@
                                             <ul class="sh_list">
                                                 <li class="sh_item">
                                                     <div class="sh_avtar" t-if='blog.sudo().author_id'>
-                                                        <img t-attf-src="/web/image/res.partner/{{ blog.sudo().author_id.id }}/image_128/80x80" t-att-alt="blog.sudo().author_id.name"/>
+                                                        <img t-attf-src="/web/image/res.partner/{{ blog.sudo().author_id.id }}/image_128/80x80" t-att-alt="blog.sudo().author_id.name" loading="lazy"/>
                                                     </div>
                                                 </li>
                                                 <li class="sh_item">
